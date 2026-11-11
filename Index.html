@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>ইলেকট্রিক্যাল স্টাডি</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f4f6f7;--card:#fff;--ink:#14212b;--mute:#5b6b77;--line:#dde3e7;--head:#12263a;--cu:#b9651f;--cu-bg:#fbeee1;--ok:#1f7a4d;--bad:#b3362b;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0e161d;--card:#17222c;--ink:#e8edf0;--mute:#9aabb7;--line:#2a3944;--head:#0a1118;--cu:#e08e4a;--cu-bg:#33241a;--ok:#5cc58f;--bad:#ef7a6e}}
+:root[data-theme="dark"]{--bg:#0e161d;--card:#17222c;--ink:#e8edf0;--mute:#9aabb7;--line:#2a3944;--head:#0a1118;--cu:#e08e4a;--cu-bg:#33241a;--ok:#5cc58f;--bad:#ef7a6e}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{font-family:'Hind Siliguri',system-ui,sans-serif;background:var(--bg);color:var(--ink);font-size:16px;line-height:1.5;padding-bottom:calc(72px + env(safe-area-inset-bottom,0px))}
+header{background:var(--head);color:#fff;padding:18px 16px 16px}
+header h1{margin:0;font-size:20px;font-weight:600}
+header p{margin:2px 0 0;font-size:13px;opacity:.75}
+main{padding:14px;max-width:560px;margin:0 auto}
+h2{font-size:17px;font-weight:600;margin:18px 0 8px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:12px 14px;margin-bottom:10px}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.sub{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--cu);border-radius:6px;padding:12px;text-align:left;font:inherit;color:inherit;cursor:pointer;min-height:64px}
+.sub small{display:block;color:var(--mute);font-size:12px}
+.btn{background:var(--cu);color:#fff;border:0;border-radius:8px;padding:10px 16px;font:inherit;font-weight:500;cursor:pointer}
+.btn.ghost{background:transparent;color:var(--cu);border:1px solid var(--cu)}
+a.row,.row{display:flex;justify-content:space-between;align-items:center;gap:10px;color:inherit;text-decoration:none}
+.tabs{display:flex;gap:6px;margin:10px 0;flex-wrap:wrap}
+.tabs button{border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:20px;padding:6px 14px;font:inherit;font-size:14px;cursor:pointer}
+.tabs button.on{background:var(--cu-bg);border-color:var(--cu);color:var(--cu)}
+.opt{display:block;width:100%;text-align:left;background:var(--card);border:1px solid var(--line);border-radius:8px;padding:11px 12px;margin-bottom:8px;font:inherit;color:inherit;cursor:pointer}
+.opt.good{border-color:var(--ok);color:var(--ok)}
+.opt.wrong{border-color:var(--bad);color:var(--bad)}
+input,select,textarea{width:100%;font:inherit;padding:10px;border:1px solid var(--line);border-radius:8px;background:var(--card);color:var(--ink);margin:4px 0 10px}
+label{font-size:14px;color:var(--mute)}
+.res{background:var(--cu-bg);border-radius:8px;padding:10px 12px;font-weight:500;min-height:44px}
+nav{position:fixed;left:0;right:0;bottom:0;background:var(--card);border-top:1px solid var(--line);display:flex;padding-bottom:env(safe-area-inset-bottom,0px)}
+nav button{flex:1;border:0;background:none;color:var(--mute);font:inherit;font-size:12px;padding:10px 0;cursor:pointer}
+nav button.on{color:var(--cu);font-weight:600}
+nav b{display:block;font-size:18px;line-height:1.2}
+.bar{height:6px;background:var(--line);border-radius:3px;margin:8px 0 14px}
+.bar i{display:block;height:6px;background:var(--cu);border-radius:3px}
+.note{font-size:13px;color:var(--mute)}
+.del{background:none;border:0;color:var(--bad);font:inherit;cursor:pointer}
+</style>
+</head>
+<body>
+<header><h1>ইলেকট্রিক্যাল স্টাডি</h1><p>পলিটেকনিক ডিপ্লোমা</p></header>
+<main id="app"></main>
+<nav id="nav"></nav>
+<script>
+var SUBJ=[
+{n:"DC Machine",ch:["জেনারেটরের গঠন","EMF সমীকরণ","DC মোটর"],q:[
+["DC জেনারেটরে কমিউটেটরের কাজ কী?",["AC কে DC তে রূপান্তর","ভোল্টেজ বাড়ানো","কারেন্ট কমানো","ফ্লাক্স তৈরি"],0],
+["DC মোটরে ব্যাক EMF কখন বাড়ে?",["গতি বাড়লে","লোড বাড়লে","গতি কমলে","ফ্লাক্স না থাকলে"],0],
+["DC জেনারেটরের EMF সমীকরণে কোনটি থাকে?",["PΦZN/60A","V/R","I²R","1/2 CV²"],0],
+["DC মোটরের টর্ক কীসের সমানুপাতিক?",["Φ × Ia","V / Ia","1 / Φ","N²"],0],
+["DC মেশিনে চৌম্বক ক্ষেত্র তৈরি করে কোন অংশ?",["ফিল্ড ওয়াইন্ডিং","ব্রাশ","শ্যাফট","বিয়ারিং"],0]]},
+{n:"Digital Electronics",ch:["বাইনারি ও গেট","বুলিয়ান অ্যালজেবরা","ফ্লিপ-ফ্লপ"],q:[
+["কোন গেটকে ইউনিভার্সাল গেট বলে?",["NAND","AND","OR","XOR"],0],
+["বাইনারি 1010 এর দশমিক মান কত?",["10","8","12","5"],0],
+["AND গেটের আউটপুট কখন 1 হয়?",["সব ইনপুট 1 হলে","যেকোনো ইনপুট 1 হলে","সব ইনপুট 0 হলে","কখনোই না"],0],
+["হাফ অ্যাডারের আউটপুট কোনগুলো?",["Sum ও Carry","শুধু Sum","Borrow ও Clock","শুধু Carry"],0],
+["বাইনারি 1111 এর দশমিক মান কত?",["15","16","14","8"],0]]},
+{n:"Electrical Installation",ch:["ওয়্যারিং পদ্ধতি","আর্থিং","সুইচগিয়ার"],q:[
+["আর্থিং এর প্রধান উদ্দেশ্য কী?",["নিরাপত্তা","ভোল্টেজ বাড়ানো","লোড কমানো","আলো বাড়ানো"],0],
+["ফিউজ কীসের সুরক্ষা দেয়?",["ওভারকারেন্ট","ওভারভোল্টেজ","কম ফ্রিকোয়েন্সি","শব্দ"],0],
+["সাধারণ ওয়্যারিং-এ সুইচ কোন তারে বসে?",["ফেজ (লাইভ)","নিউট্রাল","আর্থ","যেকোনোটিতে"],0],
+["MCB কীসের জন্য ব্যবহার হয়?",["ওভারলোড ও শর্ট সার্কিট সুরক্ষা","ভোল্টেজ মাপা","আলো জ্বালানো","গতি বাড়ানো"],0]]},
+{n:"Maintenance & Estimating",ch:["মেইন্টেন্যান্সের ধরন","এস্টিমেটিং","কস্টিং"],q:[
+["নিয়মিত সময় পরপর রক্ষণাবেক্ষণকে কী বলে?",["প্রিভেন্টিভ","ব্রেকডাউন","কারেক্টিভ","অনুমান"],0],
+["প্রিভেন্টিভ মেইন্টেন্যান্সের উদ্দেশ্য কী?",["ব্রেকডাউন আগে থেকে রোধ করা","নষ্ট হওয়ার পর ঠিক করা","যন্ত্র বিক্রি করা","খরচ বাড়ানো"],0],
+["এস্টিমেট তৈরির জন্য প্রথমে কী লাগে?",["ড্রয়িং ও স্পেসিফিকেশন","শুধু দাম","ছুটি","কিছুই না"],0]]},
+{n:"Applied Mechanics",ch:["বল ও ভরবেগ","কাজ ও ক্ষমতা","ঘর্ষণ"],q:[
+["ক্ষমতার SI একক কী?",["ওয়াট","জুল","নিউটন","প্যাসকেল"],0],
+["বলের SI একক কী?",["নিউটন","ওয়াট","জুল","মিটার"],0],
+["কাজের সূত্র কোনটি?",["বল × সরণ","বল ÷ সরণ","ভর × বেগ","চাপ × ক্ষেত্রফল"],0]]},
+{n:"Accounting",ch:["জার্নাল","লেজার","ট্রায়াল ব্যালেন্স"],q:[
+["ডাবল এন্ট্রি পদ্ধতিতে ডেবিট ও ক্রেডিট কেমন হয়?",["সমান","ডেবিট বেশি","ক্রেডিট বেশি","শূন্য"],0],
+["জার্নালকে কী বলা হয়?",["প্রাথমিক লিপিবদ্ধকরণের বই","চূড়ান্ত হিসাব","নিরীক্ষা প্রতিবেদন","ব্যাংক বিবরণী"],0],
+["ট্রায়াল ব্যালেন্সের উদ্দেশ্য কী?",["ডেবিট ও ক্রেডিটের মিল যাচাই","লাভ বাড়ানো","কর দেওয়া","ঋণ নেওয়া"],0]]},
+{n:"Social Science",ch:["সমাজ ও অর্থনীতি","কর্মক্ষেত্রের নীতি"],q:[]}
+];
+var view="home",cur=0,tab="ভিডিও",qs=null,qi=0,sc=0,done=false;
+var app=document.getElementById("app"),nav=document.getElementById("nav");
+function store(k,v){try{if(v===undefined)return JSON.parse(localStorage.getItem(k));localStorage.setItem(k,JSON.stringify(v))}catch(e){return v===undefined?null:v}}
+var routine=store("routine")||[];
+var best=store("best")||{};
+function go(v){view=v;render()}
+function render(){
+var items=[["home","⌂","হোম"],["quiz","?","কুইজ"],["tools","⚙","টুলস"],["routine","◷","রুটিন"]];
+nav.innerHTML=items.map(function(i){var on=(view===i[0]||(view==="sub"&&i[0]==="home"))?"on":"";return '<button class="'+on+'" onclick="go(\''+i[0]+'\')"><b>'+i[1]+'</b>'+i[2]+'</button>'}).join("");
+({home:home,sub:sub,quiz:quizHome,play:play,tools:tools,routine:routineV})[view]()}
+function home(){
+app.innerHTML='<h2 style="margin-top:4px">সাবজেক্ট</h2><div class="grid">'+SUBJ.map(function(s,i){return '<button class="sub" onclick="cur='+i+';tab=\'ভিডিও\';go(\'sub\')">'+s.n+'<small>'+s.ch.length+'টি চ্যাপ্টার</small></button>'}).join("")+'</div><h2>পরীক্ষার কাউন্টডাউন</h2><div class="card"><label>পরীক্ষার তারিখ</label><input type="date" id="exd" onchange="store(\'exam\',this.value);cd()"><div class="res" id="cd"></div></div>';
+var d=store("exam");if(d)document.getElementById("exd").value=d;cd()}
+function cd(){var e=document.getElementById("cd");if(!e)return;var d=store("exam");if(!d){e.textContent="তারিখ বেছে নাও";return}
+var n=Math.ceil((new Date(d)-new Date())/864e5);e.textContent=n>0?"পরীক্ষা শুরু হতে আর "+n+" দিন বাকি":n===0?"পরীক্ষা আজ":"তারিখ পার হয়ে গেছে"}
+function sub(){var s=SUBJ[cur];var h='<div class="row"><h2 style="margin:0">'+s.n+'</h2><button class="del" style="color:var(--mute)" onclick="go(\'home\')">পেছনে</button></div><div class="tabs">'+["ভিডিও","নোট","কুইজ"].map(function(t){return '<button class="'+(t===tab?"on":"")+'" onclick="tab=\''+t+'\';sub()">'+t+'</button>'}).join("")+'</div>';
+if(tab==="ভিডিও")h+=s.ch.map(function(c,i){return '<a class="card row" target="_blank" rel="noopener" href="https://www.youtube.com/results?search_query='+encodeURIComponent("polytechnic "+s.n+" "+c)+'"><span>চ্যাপ্টার '+(i+1)+': '+c+'</span><span style="color:var(--cu)">দেখো</span></a>'}).join("")+'<p class="note">লিংকগুলো নিজের পছন্দের ভিডিও দিয়ে বদলে নিও।</p>';
+if(tab==="নোট")h+=s.ch.map(function(c,i){var k=cur+'-'+i,lk=store('l'+k)||'';return '<div class="card"><b>'+c+'</b><label>নোট</label><textarea rows="3" oninput="store(\'n'+k+'\',this.value)">'+esc(store('n'+k)||'')+'</textarea><label>PDF বা ড্রাইভ লিংক</label><input value="'+esc(lk)+'" placeholder="https://..." onchange="store(\'l'+k+'\',this.value);sub()">'+(/^https?:\/\//.test(lk)?'<a class="btn ghost" style="display:inline-block;text-decoration:none" target="_blank" rel="noopener" href="'+esc(lk)+'">PDF খোলো</a>':'')+'</div>'}).join("");
+if(tab==="কুইজ")h+=s.q.length?'<button class="btn" onclick="start('+cur+')">কুইজ শুরু করো ('+s.q.length+'টি প্রশ্ন)</button>':'<p class="note">এই সাবজেক্টে এখনো প্রশ্ন নেই।</p>';
+app.innerHTML=h}
+function quizHome(){app.innerHTML='<h2 style="margin-top:4px">মডেল টেস্ট</h2>'+SUBJ.map(function(s,i){return s.q.length?'<button class="opt" onclick="start('+i+')">'+s.n+' <span class="note">'+(best[s.n]!=null?"সেরা স্কোর: "+best[s.n]+"/"+s.q.length:s.q.length+"টি প্রশ্ন")+'</span></button>':""}).join("")+'<p class="note">প্রশ্নগুলো নমুনা। নিজের বই থেকে আরও যোগ করো।</p>'}
+function start(i){cur=i;qs=SUBJ[i].q;qi=0;sc=0;done=false;view="play";render()}
+function play(){var s=SUBJ[cur];if(qi>=qs.length){if(best[s.n]==null||sc>best[s.n]){best[s.n]=sc;store("best",best)}
+app.innerHTML='<div class="card" style="text-align:center"><h2>ফলাফল</h2><div style="font-size:32px;font-weight:600;color:var(--cu)">'+sc+' / '+qs.length+'</div><p>'+(sc===qs.length?"দারুণ!":"আবার চেষ্টা করলে আরও ভালো হবে।")+'</p><button class="btn" onclick="start('+cur+')">আবার দাও</button> <button class="btn ghost" onclick="go(\'quiz\')">শেষ</button></div>';return}
+var q=qs[qi];var ord=q[1].map(function(t,k){return k});if(!q.o)q.o=ord.sort(function(){return Math.random()-.5});
+app.innerHTML='<p class="note">'+s.n+' · প্রশ্ন '+(qi+1)+'/'+qs.length+'</p><div class="bar"><i style="width:'+(qi/qs.length*100)+'%"></i></div><h2 style="margin-top:0">'+q[0]+'</h2>'+q.o.map(function(k){return '<button class="opt" onclick="pick(this,'+k+')">'+q[1][k]+'</button>'}).join("")+'<div id="nx"></div>'}
+function pick(b,k){if(done)return;done=true;var q=qs[qi];var bs=document.querySelectorAll(".opt");
+for(var i=0;i<bs.length;i++){bs[i].onclick=null}
+b.className="opt "+(k===q[2]?"good":"wrong");if(k===q[2])sc++;
+else{for(var j=0;j<bs.length;j++){if(bs[j].textContent===q[1][q[2]])bs[j].className="opt good"}}
+document.getElementById("nx").innerHTML='<button class="btn" onclick="done=false;delete qs[qi].o;qi++;play()">পরের প্রশ্ন</button>'}
+function tools(){app.innerHTML='<h2 style="margin-top:4px">ওহমের সূত্র</h2><div class="card"><label>ভোল্টেজ V (ফাঁকা রাখলে হিসাব হবে)</label><input id="v" type="number" inputmode="decimal"><label>কারেন্ট I (অ্যাম্পিয়ার)</label><input id="i" type="number" inputmode="decimal"><label>রেজিস্ট্যান্স R (ওহম)</label><input id="r" type="number" inputmode="decimal"><button class="btn" onclick="ohm()">হিসাব করো</button><div class="res" id="o" style="margin-top:10px"></div></div><h2>পাওয়ার ও বিদ্যুৎ বিল</h2><div class="card"><label>লোড (ওয়াট)</label><input id="w" type="number" inputmode="decimal"><label>প্রতিদিন কত ঘণ্টা চলে</label><input id="h" type="number" inputmode="decimal"><label>প্রতি ইউনিটের দাম (টাকা)</label><input id="p" type="number" inputmode="decimal" value="8"><button class="btn" onclick="bill()">হিসাব করো</button><div class="res" id="b" style="margin-top:10px"></div></div>'}
+function f(x){return Math.round(x*100)/100}
+function ohm(){var v=parseFloat(document.getElementById("v").value),i=parseFloat(document.getElementById("i").value),r=parseFloat(document.getElementById("r").value),o=document.getElementById("o");
+var n=[v,i,r].filter(function(x){return !isNaN(x)}).length;
+if(n!==2){o.textContent="যেকোনো দুটি মান দাও";return}
+if(isNaN(v))v=i*r;else if(isNaN(i)){if(r===0){o.textContent="R শূন্য হতে পারে না";return}i=v/r}else{if(i===0){o.textContent="I শূন্য হতে পারে না";return}r=v/i}
+o.textContent="V = "+f(v)+" V, I = "+f(i)+" A, R = "+f(r)+" Ω, P = "+f(v*i)+" W"}
+function bill(){var w=parseFloat(document.getElementById("w").value),h=parseFloat(document.getElementById("h").value),p=parseFloat(document.getElementById("p").value),b=document.getElementById("b");
+if(isNaN(w)||isNaN(h)||isNaN(p)){b.textContent="সব ঘর পূরণ করো";return}
+var u=w*h*30/1000;b.textContent="মাসে "+f(u)+" ইউনিট, খরচ "+f(u*p)+" টাকা"}
+function routineV(){app.innerHTML='<h2 style="margin-top:4px">স্টাডি রুটিন</h2><div class="card"><label>সাবজেক্ট</label><select id="rs">'+SUBJ.map(function(s){return '<option>'+s.n+'</option>'}).join("")+'</select><label>সময়</label><input id="rt" type="time" value="19:00"><button class="btn" onclick="addR()">যোগ করো</button></div><div id="rl"></div><p class="note">ফোনে অ্যালার্ম দিতে রুটিনের সময় ঘড়ির অ্যাপে সেট করে নিও।</p>';rl()}
+function rl(){var e=document.getElementById("rl");var s=routine.slice().sort(function(a,b){return a.t<b.t?-1:1});
+e.innerHTML=s.length?s.map(function(x){return '<div class="card row"><span>'+x.t+' · '+x.s+'</span><button class="del" onclick="delR('+x.id+')">মুছো</button></div>'}).join(""):'<p class="note">এখনো কোনো রুটিন নেই। প্রথম পড়ার সময় যোগ করো।</p>'}
+function addR(){routine.push({id:Date.now(),s:document.getElementById("rs").value,t:document.getElementById("rt").value});store("routine",routine);rl()}
+function delR(id){routine=routine.filter(function(x){return x.id!==id});store("routine",routine);rl()}
+function esc(t){return String(t).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;')}
+render();
+</script>
+</body>
+</html>
